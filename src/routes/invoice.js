@@ -1,7 +1,9 @@
-import { useParams } from 'react-router-dom'
-import { getInvoice } from '../data';
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
+import { getInvoice, deleteInvoice } from '../data';
 
 export default function Invoice() {
+    let navigate = useNavigate();
+    let location = useLocation();
     //the key of the param on the params object is the same as the dynamic segment in the route path
     // :invoiceId -> params.invoiceId
     let params = useParams()
@@ -13,5 +15,14 @@ export default function Invoice() {
             {invoice.name}: {invoice.number}
         </p>
         <p>Due Date: {invoice.due}</p>
+        <button
+            onClick={() => {
+                deleteInvoice(invoice.number);
+                navigate("/invoices" + location.search);
+            }}
+        >
+            Delete
+        </button>
     </main>)
 }
+

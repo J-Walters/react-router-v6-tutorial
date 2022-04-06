@@ -3,3 +3,28 @@ index routes
     - Index routes match when a parent route matches but none of the other children match.
     - Index routes are the default child route for a parent route.
     - Index routes render when the user hasn't clicked one of the items in a navigation list yet.
+
+search params
+    - Search params are like URL params but they sit in a different position in the URL. 
+    Instead of being in the normal URL segments separated by /, they are at the end after a ?. 
+    You've seen them across the web like "/login?success=1" or "/shoes?brand=nike&sort=asc&sortby=price"
+
+    - React Router makes it easy to read and manipulate the search params with useSearchParams. 
+    It works a lot like React.useState() but stores and sets the state in the URL search params instead of in memory.
+
+    ex. in invoices.js explained
+        - setSearchParams() is putting the ?filter=... search params in the URL and rerendering the router.
+        useSearchParams is now returning a URLSearchParams with "filter" as one of its values.
+        We set the value of the input to whatever is in the filter search param (it's just like useState but in the URLSearchParams instead!)
+        We filter our list of invoices based on the filter search param.
+
+useLocation
+    - returns a location that tells us information about the url
+    - a location looks like this
+        {
+            pathname: "/invoices",
+            search: "?filter=sa",
+            hash: "",
+            state: null,
+            key: "ae4cz2j"
+        }

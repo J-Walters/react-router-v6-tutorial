@@ -21,6 +21,7 @@ render(
         {/* 2. nest the UI components for shared layout when the child route matches */}
         <Route path="expenses" element={<Expenses />} />
         <Route path="invoices" element={<Invoices />} >
+          {/* index prop shares the path of the parent (doesn't have it's own path) */}
           <Route index element={<main style={{ padding: '1rem' }}>
             <p>Select an invoice</p>
           </main>} />
